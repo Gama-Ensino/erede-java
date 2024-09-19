@@ -62,6 +62,16 @@ public class Transaction extends AbstractTransaction<Boolean> {
         return this;
     }
 
+    public Transaction creditCard(String cardNumber, String securityCode, String expirationMonth,
+                                  String expirationYear, String cardHolderName, Integer installments) {
+        setCard(cardNumber, securityCode, expirationMonth, expirationYear, cardHolderName,
+                Transaction.CREDIT, installments);
+
+        setCapture(true);
+
+        return this;
+    }
+
     public Transaction setCard(String cardNumber, String securityCode, String expirationMonth,
                                String expirationYear, String cardHolderName, String kind) {
         setCardNumber(cardNumber);
@@ -70,6 +80,19 @@ public class Transaction extends AbstractTransaction<Boolean> {
         setExpirationYear(expirationYear);
         setCardHolderName(cardHolderName);
         setKind(kind);
+
+        return this;
+    }
+
+    public Transaction setCard(String cardNumber, String securityCode, String expirationMonth,
+                               String expirationYear, String cardHolderName, String kind, Integer installments) {
+        setCardNumber(cardNumber);
+        setSecurityCode(securityCode);
+        setExpirationMonth(expirationMonth);
+        setExpirationYear(expirationYear);
+        setCardHolderName(cardHolderName);
+        setKind(kind);
+        setInstallments(installments);
 
         return this;
     }
